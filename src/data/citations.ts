@@ -8,6 +8,8 @@ export interface Citation {
   type: 'academic' | 'government' | 'ngo'
 }
 
+export const groupMembers = ['Alex Radu', 'etc']
+
 export const citations: Citation[] = [
   {
     id: 1,

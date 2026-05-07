@@ -12,14 +12,14 @@ function OrganismPanel({ org, index }: { org: Organism; index: number }) {
   const reverse = index % 2 === 1
 
   return (
-    <div ref={ref} className="relative min-h-screen flex items-center px-6 md:px-12 lg:px-16 py-24">
+    <div ref={ref} className="relative lg:min-h-[150vh] px-6 md:px-12 lg:px-16 py-24">
       <div className="max-w-7xl mx-auto w-full">
         <div
-          className={`grid lg:grid-cols-12 gap-8 lg:gap-16 items-center ${
+          className={`grid lg:grid-cols-12 gap-8 lg:gap-16 lg:items-start ${
             reverse ? 'lg:[&>*:first-child]:order-2' : ''
           }`}
         >
-          <div className="lg:col-span-6 relative aspect-[4/5] lg:aspect-auto lg:h-[80vh] overflow-hidden rounded-2xl border border-white/10">
+          <div className="lg:col-span-6 relative aspect-[4/5] lg:aspect-auto lg:h-[80vh] overflow-hidden rounded-2xl border border-white/10 lg:sticky lg:top-[10vh]">
             <motion.img
               src={org.imageUrl}
               alt={org.label}

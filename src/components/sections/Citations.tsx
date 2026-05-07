@@ -1,5 +1,5 @@
 import { AnimatedText, Reveal } from '../ui/AnimatedText'
-import { citations } from '../../data/citations'
+import { citations, groupMembers } from '../../data/citations'
 
 const TYPE_LABEL: Record<string, string> = {
   academic: 'Academic',
@@ -56,6 +56,21 @@ export function Citations() {
             </Reveal>
           ))}
         </ol>
+
+        <div className="mt-20">
+          <Reveal>
+            <p className="section-eyebrow mb-6">Group Members</p>
+          </Reveal>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-px border border-white/10 bg-white/10">
+            {groupMembers.map((member, i) => (
+              <Reveal key={member} delay={i * 50}>
+                <div className="bg-black px-5 py-5 md:px-6 md:py-6">
+                  <p className="text-white text-lg md:text-xl leading-tight">{member}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
 
         <p className="text-white/35 text-xs tracking-[0.2em] mt-12 uppercase">
           Pascack Hills High School · NJ Chemistry Olympics 2026
