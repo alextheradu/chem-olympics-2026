@@ -19,8 +19,9 @@ function scrollTo(selector: string) {
 
 export function Navbar() {
   const { scrollY } = useScroll()
-  const maxWidth = useTransform(scrollY, [0, 400], ['100%', '720px'])
-  const paddingY = useTransform(scrollY, [0, 400], ['0.5rem', '0.35rem'])
+  const maxWidth = useTransform(scrollY, [0, 400], ['100%', '92%'])
+  const linkGap = useTransform(scrollY, [0, 400], ['1.75rem', '1.1rem'])
+  const paddingY = useTransform(scrollY, [0, 400], ['0.5rem', '0.4rem'])
 
   return (
     <div className="px-4 sm:px-6 md:px-12 lg:px-16 pt-4 md:pt-6 fixed top-0 left-0 right-0 z-50">
@@ -42,7 +43,7 @@ export function Navbar() {
           PHHS · Chem Olympics
         </a>
 
-        <div className="hidden lg:flex items-center gap-7">
+        <motion.div className="hidden lg:flex items-center" style={{ gap: linkGap }}>
           {navLinks.map((link) => (
             <a
               key={link.href}
@@ -56,7 +57,7 @@ export function Navbar() {
               {link.label}
             </a>
           ))}
-        </div>
+        </motion.div>
 
         {/* <a
           href="#source"
