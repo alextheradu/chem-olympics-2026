@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { motion, useScroll, useTransform } from 'framer-motion'
 
 const navLinks = [
   { label: 'Source', href: '#source' },
@@ -18,10 +18,15 @@ function scrollTo(selector: string) {
 }
 
 export function Navbar() {
+  const { scrollY } = useScroll()
+  const maxWidth = useTransform(scrollY, [0, 400], ['100%', '720px'])
+  const paddingY = useTransform(scrollY, [0, 400], ['0.5rem', '0.35rem'])
+
   return (
     <div className="px-4 sm:px-6 md:px-12 lg:px-16 pt-4 md:pt-6 fixed top-0 left-0 right-0 z-50">
       <motion.nav
-        className="liquid-glass rounded-xl px-4 py-2 flex items-center justify-between gap-4"
+        className="liquid-glass rounded-xl px-4 flex items-center justify-between gap-4 mx-auto"
+        style={{ maxWidth, paddingTop: paddingY, paddingBottom: paddingY }}
         initial={{ opacity: 0, y: -16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
@@ -53,7 +58,7 @@ export function Navbar() {
           ))}
         </div>
 
-        <a
+        {/* <a
           href="#source"
           onClick={(e) => {
             e.preventDefault()
@@ -62,7 +67,7 @@ export function Navbar() {
           className="bg-white text-black px-4 sm:px-5 py-1.5 rounded-lg text-xs sm:text-sm font-medium hover:bg-white/85 transition-colors whitespace-nowrap"
         >
           Begin
-        </a>
+        </a> */}
       </motion.nav>
     </div>
   )
