@@ -24,10 +24,10 @@ function OrganismPanel({ org, index }: { org: Organism; index: number }) {
               src={org.imageUrl}
               alt={org.label}
               loading="lazy"
-              className="absolute inset-0 w-full h-full object-cover grayscale-[0.4]"
+              className="absolute inset-0 w-full h-full object-cover grayscale-[0.2]"
               style={{ y: imgY, scale: imgScale }}
             />
-            <div className="absolute inset-0 bg-gradient-to-tr from-black/70 via-black/20 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-tr from-black/45 via-black/5 to-transparent" />
             <div className="absolute top-6 left-6 flex items-center gap-3">
               <span className="chem-formula text-white text-xs tracking-[0.25em]">{org.index}</span>
               <span className="block w-8 h-px bg-white/40" />

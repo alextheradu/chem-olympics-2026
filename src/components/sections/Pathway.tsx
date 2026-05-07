@@ -115,12 +115,12 @@ export function Pathway() {
                 <img
                   src={stage.imageUrl}
                   alt=""
-                  className="w-full h-full object-cover grayscale brightness-[0.35]"
+                  className="w-full h-full object-cover grayscale-[0.6] brightness-[0.85]"
                   loading="lazy"
                   aria-hidden
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-black via-black/70 to-black/30" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/40 to-black/10" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
               </div>
 
               <div className="relative z-10 grid lg:grid-cols-12 gap-10 h-full items-end max-w-7xl mx-auto">
