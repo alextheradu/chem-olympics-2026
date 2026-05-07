@@ -61,15 +61,13 @@ export function Citations() {
           <Reveal>
             <p className="section-eyebrow mb-6">Group Members</p>
           </Reveal>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-px border border-white/10 bg-white/10">
+          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-3">
             {groupMembers.map((member, i) => (
               <Reveal key={member} delay={i * 50}>
-                <div className="bg-black px-5 py-5 md:px-6 md:py-6">
-                  <p className="text-white text-lg md:text-xl leading-tight">{member}</p>
-                </div>
+                <li className="text-white/70 text-sm md:text-base leading-snug">{member}</li>
               </Reveal>
             ))}
-          </div>
+          </ul>
         </div>
 
         <p className="text-white/35 text-xs tracking-[0.2em] mt-12 uppercase">

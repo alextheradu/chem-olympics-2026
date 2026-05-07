@@ -8,7 +8,7 @@ export interface Citation {
   type: 'academic' | 'government' | 'ngo'
 }
 
-export const groupMembers = ['Alex Radu', 'etc']
+export const groupMembers = ['Alex Radu', 'Evelyn Gray', 'Abigail Javer', 'Alexis DeRose', 'Audrey Gray']
 
 export const citations: Citation[] = [
   {
