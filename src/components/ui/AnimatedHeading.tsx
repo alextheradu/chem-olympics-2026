@@ -27,7 +27,7 @@ export function AnimatedHeading({
         const previousChars = lines.slice(0, lineIndex).reduce((count, current) => count + current.length, 0)
 
         return (
-          <span key={line} className="block">
+          <span key={line} className="block whitespace-nowrap">
             {line.split('').map((char, charIndex) => {
               const delay = (previousChars + charIndex) * charDelay
 
