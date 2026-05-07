@@ -1,153 +1,152 @@
 import { motion } from 'framer-motion'
 
 const ATOM_COLORS: Record<string, string> = {
-  C: '#555555',
-  O: '#E8524A',
-  N: '#4A6FD4',
-  H: '#999999',
+  C: '#909090',
+  N: '#3050f8',
+  O: '#ff0d0d',
+  H: '#ffffff',
 }
 
-interface Atom {
+export interface Atom {
   id: string
-  element: string
+  element: 'C' | 'N' | 'O' | 'H'
   x: number
   y: number
   label?: string
 }
 
-interface Bond {
+export interface Bond {
   from: string
   to: string
   double?: boolean
+  triple?: boolean
 }
 
-const atoms: Atom[] = [
-  { id: 'c1', element: 'C', x: 60, y: 120 },
-  { id: 'c2', element: 'C', x: 90, y: 100 },
-  { id: 'c3', element: 'C', x: 120, y: 120 },
-  { id: 'c4', element: 'C', x: 120, y: 160 },
-  { id: 'c5', element: 'C', x: 90, y: 180 },
-  { id: 'c6', element: 'C', x: 60, y: 160 },
-  { id: 'c7', element: 'C', x: 150, y: 100 },
-  { id: 'c8', element: 'C', x: 180, y: 120 },
-  { id: 'c9', element: 'C', x: 180, y: 160 },
-  { id: 'c10', element: 'C', x: 150, y: 180 },
-  { id: 'o1', element: 'O', x: 210, y: 140 },
-  { id: 'cc', element: 'C', x: 245, y: 140 },
-  { id: 'o2', element: 'O', x: 245, y: 105 },
-  { id: 'n1', element: 'N', x: 280, y: 140 },
-  { id: 'cm', element: 'C', x: 315, y: 140, label: 'CH3' },
-]
+interface MoleculeDisplayProps {
+  atoms: Atom[]
+  bonds: Bond[]
+  formula: string
+  name: string
+  viewBox?: string
+  className?: string
+  showLegend?: boolean
+}
 
-const bonds: Bond[] = [
-  { from: 'c1', to: 'c2' },
-  { from: 'c2', to: 'c3', double: true },
-  { from: 'c3', to: 'c4' },
-  { from: 'c4', to: 'c5', double: true },
-  { from: 'c5', to: 'c6' },
-  { from: 'c6', to: 'c1', double: true },
-  { from: 'c3', to: 'c7' },
-  { from: 'c7', to: 'c8', double: true },
-  { from: 'c8', to: 'c9' },
-  { from: 'c9', to: 'c10', double: true },
-  { from: 'c10', to: 'c4' },
-  { from: 'c10', to: 'c5' },
-  { from: 'c9', to: 'o1' },
-  { from: 'o1', to: 'cc' },
-  { from: 'cc', to: 'o2', double: true },
-  { from: 'cc', to: 'n1' },
-  { from: 'n1', to: 'cm' },
-]
-
-const atomMap = Object.fromEntries(atoms.map((atom) => [atom.id, atom]))
-
-function getBondPath(a: Atom, b: Atom, double?: boolean) {
-  if (!double) return `M ${a.x} ${a.y} L ${b.x} ${b.y}`
-
+function bondPath(a: Atom, b: Atom, offset = 0) {
+  if (offset === 0) return `M ${a.x} ${a.y} L ${b.x} ${b.y}`
   const dx = b.y - a.y
   const dy = a.x - b.x
   const len = Math.sqrt(dx * dx + dy * dy)
-  const nx = (dx / len) * 3
-  const ny = (dy / len) * 3
-
-  return `M ${a.x + nx} ${a.y + ny} L ${b.x + nx} ${b.y + ny} M ${a.x - nx} ${a.y - ny} L ${b.x - nx} ${b.y - ny}`
+  const nx = (dx / len) * offset
+  const ny = (dy / len) * offset
+  return `M ${a.x + nx} ${a.y + ny} L ${b.x + nx} ${b.y + ny}`
 }
 
-export function MoleculeDisplay() {
+export function MoleculeDisplay({
+  atoms,
+  bonds,
+  formula,
+  name,
+  viewBox = '0 0 380 280',
+  className = '',
+  showLegend = true,
+}: MoleculeDisplayProps) {
+  const atomMap = Object.fromEntries(atoms.map((a) => [a.id, a]))
+
   return (
-    <div className="w-full flex flex-col items-center gap-4">
+    <div className={`w-full flex flex-col items-center gap-4 ${className}`}>
       <motion.svg
-        viewBox="0 0 380 280"
+        viewBox={viewBox}
         className="w-full max-w-md"
-        initial={{ opacity: 0, scale: 0.9 }}
+        initial={{ opacity: 0, scale: 0.94 }}
         whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8, ease: 'easeOut' }}
-        aria-label="Simplified carbaryl molecular structure"
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.9, ease: [0.2, 0.7, 0.2, 1] }}
+        aria-label={`${name} molecular structure`}
       >
-        {bonds.map((bond, index) => {
+        {bonds.map((bond, i) => {
           const a = atomMap[bond.from]
           const b = atomMap[bond.to]
+          if (!a || !b) return null
+          const lines: string[] = []
+          if (bond.triple) {
+            lines.push(bondPath(a, b, 0), bondPath(a, b, 4), bondPath(a, b, -4))
+          } else if (bond.double) {
+            lines.push(bondPath(a, b, 3), bondPath(a, b, -3))
+          } else {
+            lines.push(bondPath(a, b, 0))
+          }
 
-          return (
+          return lines.map((d, j) => (
             <motion.path
-              key={`${bond.from}-${bond.to}`}
-              d={getBondPath(a, b, bond.double)}
-              stroke="rgba(200,215,255,0.45)"
+              key={`${bond.from}-${bond.to}-${j}`}
+              d={d}
+              stroke="rgba(255,255,255,0.55)"
               strokeWidth={1.5}
+              strokeLinecap="round"
               fill="none"
               initial={{ pathLength: 0, opacity: 0 }}
               whileInView={{ pathLength: 1, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.04 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.5, delay: i * 0.04 + j * 0.02 }}
             />
-          )
+          ))
         })}
 
-        {atoms.map((atom, index) => (
+        {atoms.map((atom, i) => (
           <motion.g
             key={atom.id}
             initial={{ scale: 0, opacity: 0 }}
             whileInView={{ scale: 1, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.3, delay: bonds.length * 0.04 + index * 0.05 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.35, delay: bonds.length * 0.04 + i * 0.05 }}
           >
             <circle
               cx={atom.x}
               cy={atom.y}
-              r={atom.label ? 16 : 10}
+              r={atom.label ? 18 : 11}
               fill={ATOM_COLORS[atom.element]}
-              stroke="white"
-              strokeWidth={1.5}
+              stroke="rgba(0,0,0,0.6)"
+              strokeWidth={1.2}
             />
             <text
               x={atom.x}
               y={atom.y}
               textAnchor="middle"
               dominantBaseline="central"
-              fill="white"
-              fontSize={atom.label ? 10 : 9}
+              fill={atom.element === 'H' ? '#000' : '#fff'}
+              fontSize={atom.label ? 10 : 10}
               fontFamily="Inter, sans-serif"
-              fontWeight="500"
+              fontWeight={600}
             >
               {atom.label ?? atom.element}
             </text>
           </motion.g>
         ))}
 
-        <text x="190" y="255" textAnchor="middle" fill="rgba(241,245,249,0.45)" fontSize="13" fontFamily="Inter, sans-serif">
-          C12H11NO2 - Carbaryl
+        <text
+          x={parseInt(viewBox.split(' ')[2]) / 2}
+          y={parseInt(viewBox.split(' ')[3]) - 12}
+          textAnchor="middle"
+          fill="rgba(255,255,255,0.45)"
+          fontSize="12"
+          fontFamily="Inter, sans-serif"
+          letterSpacing="0.04em"
+        >
+          {formula} · {name}
         </text>
       </motion.svg>
 
-      <div className="flex gap-4 text-xs text-[var(--text-muted)]">
-        {Object.entries(ATOM_COLORS).map(([element, color]) => (
-          <div key={element} className="flex items-center gap-1.5">
-            <span className="w-3 h-3 rounded-full inline-block" style={{ background: color }} />
-            <span>{element}</span>
-          </div>
-        ))}
-      </div>
+      {showLegend ? (
+        <div className="flex gap-4 text-[11px] text-white/50 tracking-wide">
+          {Object.entries(ATOM_COLORS).map(([el, color]) => (
+            <div key={el} className="flex items-center gap-1.5">
+              <span className="w-2.5 h-2.5 rounded-full inline-block" style={{ background: color }} />
+              <span>{el}</span>
+            </div>
+          ))}
+        </div>
+      ) : null}
     </div>
   )
 }

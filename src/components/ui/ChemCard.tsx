@@ -1,16 +1,18 @@
+import { type ReactNode } from 'react'
+
 interface ChemCardProps {
-  label: string
-  value: string
-  accent?: string
+  label?: string
+  title?: string
+  children: ReactNode
+  className?: string
 }
 
-export function ChemCard({ label, value, accent = '#4A6FD4' }: ChemCardProps) {
+export function ChemCard({ label, title, children, className = '' }: ChemCardProps) {
   return (
-    <div className="soft-card rounded-xl p-4" style={{ borderColor: `${accent}22` }}>
-      <p className="section-label mb-1" style={{ color: accent }}>
-        {label}
-      </p>
-      <p className="text-[var(--text)] font-medium text-sm leading-relaxed chem-formula">{value}</p>
+    <div className={`mono-card rounded-2xl p-6 md:p-8 ${className}`}>
+      {label ? <p className="section-eyebrow mb-3">{label}</p> : null}
+      {title ? <h3 className="text-white text-xl md:text-2xl font-normal mb-4 tracking-tight">{title}</h3> : null}
+      <div className="text-white/75 text-sm md:text-base leading-relaxed">{children}</div>
     </div>
   )
 }

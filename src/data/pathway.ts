@@ -1,70 +1,82 @@
-export interface PathwayNode {
+export interface PathwayStage {
   id: number
+  index: string
   label: string
-  icon: string
-  xPct: number
-  yPct: number
+  shortLabel: string
+  imageUrl: string
   chemistry: string
   equation?: string
+  equationLabel?: string
   example: string
-  source?: string
+  citationIds: number[]
 }
 
-export const pathwayNodes: PathwayNode[] = [
+export const pathway: PathwayStage[] = [
   {
     id: 1,
-    label: 'Farm Application',
-    icon: '🌾',
-    xPct: 8,
-    yPct: 30,
+    index: '01',
+    label: 'Application',
+    shortLabel: 'Spray',
+    imageUrl:
+      'https://images.pexels.com/photos/2933243/pexels-photo-2933243.jpeg?auto=compress&cs=tinysrgb&w=1600',
     chemistry:
-      'Carbaryl (C12H11NO2) is applied as a spray or dust to crops at 1-2 kg/ha. It belongs to the N-methyl carbamate class, derived from carbamic acid. Its naphthyl ester structure makes it effective against a broad spectrum of insects.',
-    equation: 'NH2COOH + C10H7OH -> C12H11NO2 (carbaryl) + H2O',
-    example: 'Corn, apples, and ornamental crops - typical application window: growing season, pre-harvest.',
-    source: 'EPA Carbaryl Reregistration',
+      'Carbaryl (C₁₂H₁₁NO₂) is sprayed on crops at 1–2 kg ha⁻¹ as a wettable powder or liquid emulsion. As an N-methyl carbamate it is the ester of carbamic acid and 1-naphthol — a configuration that makes it broadly insecticidal yet hydrolytically labile.',
+    equation: 'NH₂COOH  +  C₁₀H₇—OH  ⇌  C₁₂H₁₁NO₂  +  H₂O',
+    equationLabel: 'Esterification — formal synthesis from parent acid',
+    example: 'Corn, apples, ornamentals — applied during the growing season, often pre-harvest.',
+    citationIds: [4, 6],
   },
   {
     id: 2,
-    label: 'Soil Absorption',
-    icon: '🌱',
-    xPct: 28,
-    yPct: 60,
+    index: '02',
+    label: 'Soil Binding',
+    shortLabel: 'Soil',
+    imageUrl:
+      'https://images.pexels.com/photos/2280571/pexels-photo-2280571.jpeg?auto=compress&cs=tinysrgb&w=1600',
     chemistry:
-      'After application, carbaryl binds to soil particles via van der Waals forces and hydrogen bonding. Binding strength depends on soil organic matter content and pH. In alkaline soils, hydrolysis accelerates, producing 1-naphthol.',
-    equation: 'Carbaryl(aq) + soil organic matter -> Carbaryl-SOM complex',
-    example: 'Sandy, low-organic soils show higher leaching risk than clay-rich soils.',
+      'Carbaryl reaching the soil partitions between organic matter (sorbed) and the soil-water phase. Sorption strength rises with organic-carbon content (Kₒc ≈ 200–300). In alkaline soils, hydrolysis to 1-naphthol begins immediately.',
+    equation: 'C₁₂H₁₁NO₂  +  H₂O  →[OH⁻]  C₁₀H₇—OH  +  CH₃—NH—COOH',
+    equationLabel: 'Hydrolysis dominant at pH > 7',
+    example: 'Sandy, low-organic soils → faster leaching. Clay & peat soils → tighter binding, slower release.',
+    citationIds: [6],
   },
   {
     id: 3,
-    label: 'Water Runoff',
-    icon: '💧',
-    xPct: 50,
-    yPct: 25,
+    index: '03',
+    label: 'Runoff',
+    shortLabel: 'Runoff',
+    imageUrl:
+      'https://images.pexels.com/photos/957024/forest-trees-perspective-bright-957024.jpeg?auto=compress&cs=tinysrgb&w=1600',
     chemistry:
-      'Rainfall or irrigation carries dissolved and particulate-bound carbaryl from fields into drainage ditches, streams, and rivers. Detected levels in urban streams can exceed chronic aquatic toxicity thresholds.',
-    example: 'Studies detect carbaryl in more than half of sampled urban streams in some monitoring programs.',
-    source: 'EPA Aquatic Life Benchmarks',
+      'Rainfall and irrigation transport dissolved carbaryl and sediment-bound carbaryl into ditches, streams, and rivers. Detected concentrations in monitored urban streams routinely exceed chronic aquatic-life benchmarks.',
+    example: 'Carbaryl is detected in more than half of sampled urban streams in some U.S. monitoring programs.',
+    citationIds: [3, 6],
   },
   {
     id: 4,
-    label: 'Aquatic Contact',
-    icon: '🐟',
-    xPct: 72,
-    yPct: 55,
+    index: '04',
+    label: 'Aquatic Uptake',
+    shortLabel: 'Uptake',
+    imageUrl:
+      'https://images.pexels.com/photos/1131407/pexels-photo-1131407.jpeg?auto=compress&cs=tinysrgb&w=1600',
     chemistry:
-      'Aquatic organisms absorb carbaryl through gill membranes and skin. At the nerve synapse, carbaryl carbamylates the serine hydroxyl group in the AChE active site, blocking acetylcholine breakdown.',
-    equation: 'AChE-OH + Carbaryl -> AChE-O-CO-NHCH3 (carbamyl-AChE)',
-    example: 'Rainbow trout show paralysis at high exposure; Daphnia can be affected at much lower concentrations.',
-    source: 'PMC11570982',
+      'Carbaryl is absorbed across gill membranes and skin. At the cholinergic synapse it carbamylates the serine —OH of acetylcholinesterase, blocking acetylcholine breakdown. Nerve impulses fire continuously; paralysis follows.',
+    equation: 'AChE—OH  +  Carbaryl  →  AChE—O—C(=O)—NH—CH₃  (carbamyl-AChE)',
+    equationLabel: 'Active-site carbamylation — reversible',
+    example: 'Rainbow trout LC₅₀ ≈ 1.3 mg L⁻¹ (96 h). Daphnia magna respond at far lower concentrations.',
+    citationIds: [1],
   },
   {
     id: 5,
-    label: 'Bioaccumulation',
-    icon: '🦅',
-    xPct: 91,
-    yPct: 30,
+    index: '05',
+    label: 'Food Chain',
+    shortLabel: 'Predators',
+    imageUrl:
+      'https://images.pexels.com/photos/1661179/pexels-photo-1661179.jpeg?auto=compress&cs=tinysrgb&w=1600',
     chemistry:
-      'Although carbaryl has a relatively low bioconcentration factor, sublethal effects propagate up the food chain. Insects and small fish with impaired nervous systems become easier prey, increasing predator exposure.',
-    example: 'Predators near heavily sprayed agricultural watersheds can be exposed by consuming affected prey.',
+      'Carbaryl has a low bioconcentration factor, so it does not biomagnify like organochlorines — but sub-lethal effects propagate. Slow, disoriented insects and small fish are easier prey, so predators sample disproportionately exposed organisms.',
+    example:
+      'Birds and mammals near sprayed watersheds accumulate exposure indirectly. Carbofuran has been used illegally to bait raptors.',
+    citationIds: [4, 6],
   },
 ]

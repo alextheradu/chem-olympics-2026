@@ -1,65 +1,68 @@
 export interface Organism {
-  id: 'aquatic' | 'insect' | 'plant'
+  id: 'aquatic' | 'pollinator' | 'plant'
+  index: string
   label: string
   subtitle: string
-  colorVar: string
-  colorHex: string
-  icon: string
   intro: string
   mechanism: string
   equation: string
   equationLabel: string
   keyFact: string
-  citationId: number
+  imageUrl: string
+  imageCredit: string
+  citationIds: number[]
 }
 
 export const organisms: Organism[] = [
   {
     id: 'aquatic',
+    index: '01',
     label: 'Aquatic Life',
-    subtitle: 'Fish & Invertebrates',
-    colorVar: '--aquatic',
-    colorHex: '#4A6FD4',
-    icon: '🐟',
+    subtitle: 'Fish & invertebrates',
     intro:
-      'Carbaryl enters waterways through agricultural runoff, where it poses acute toxicity to fish and aquatic invertebrates at very low concentrations.',
+      'Field-applied carbamates leave the soil in runoff after rainfall and irrigation, reaching ditches, streams, and rivers. Acute toxicity to fish and Daphnia begins at low parts-per-billion concentrations.',
     mechanism:
-      'Carbaryl inhibits acetylcholinesterase (AChE), the enzyme responsible for breaking down acetylcholine at nerve synapses. When AChE is blocked, acetylcholine accumulates, causing continuous nerve firing.',
-    equation: 'AChE + Carbaryl -> AChE-Carbaryl (inhibited complex)',
-    equationLabel: 'AChE Inhibition (reversible carbamylation)',
-    keyFact: 'LC50 for rainbow trout: 1.3 mg/L (96-hour exposure)',
-    citationId: 1,
+      'Carbaryl crosses the gill epithelium and reaches the synapse, where it carbamylates the serine hydroxyl in the active site of acetylcholinesterase (AChE). With AChE blocked, acetylcholine accumulates and nerves fire continuously — paralysis, convulsions, organ failure follow.',
+    equation: 'AChE—OH + Carbaryl  →  AChE—O—C(=O)—NH—CH₃  +  1-naphthol',
+    equationLabel: 'Reversible carbamylation of the AChE active site',
+    keyFact: 'LC₅₀ rainbow trout: 1.3 mg L⁻¹ (96 h)',
+    imageUrl:
+      'https://images.pexels.com/photos/3046582/pexels-photo-3046582.jpeg?auto=compress&cs=tinysrgb&w=1600',
+    imageCredit: 'Pexels — freshwater stream',
+    citationIds: [1, 6],
   },
   {
-    id: 'insect',
-    label: 'Insect Pollinators',
-    subtitle: 'Bees & Beneficial Insects',
-    colorVar: '--insect',
-    colorHex: '#D4820A',
-    icon: '🐝',
+    id: 'pollinator',
+    index: '02',
+    label: 'Pollinators',
+    subtitle: 'Bees & beneficial insects',
     intro:
-      'Carbaryl is highly toxic to honeybees and other beneficial pollinators. Contact or ingestion during crop spraying causes rapid mortality, threatening pollination services critical to agriculture.',
+      'Carbaryl is among the most acutely bee-toxic insecticides in routine use. Spray drift onto flowering crops, contact with treated foliage, or contaminated nectar all deliver lethal doses.',
     mechanism:
-      'The same AChE inhibition that affects fish acts on insect nervous systems. In bees, this causes uncontrolled wing muscle firing, disorientation, and inability to return to the hive. Sublethal doses impair foraging behavior and memory.',
-    equation: 'CH3NHCOO-C10H7 + AChE -> CH3NHCOO-AChE + C10H7OH',
-    equationLabel: 'Carbamylation of AChE active site',
-    keyFact: 'LD50 (honeybee, contact): 1.0 microgram/bee - highly toxic',
-    citationId: 2,
+      'The same AChE inhibition acts on the insect nervous system. Bees lose flight coordination, fail to return to the hive, and die. Sub-lethal doses impair foraging memory and brood care, eroding colony health over weeks.',
+    equation: 'CH₃—NH—C(=O)—O—C₁₀H₇  +  AChE—OH  →  CH₃—NH—C(=O)—O—AChE  +  C₁₀H₇—OH',
+    equationLabel: 'Carbamylation at the AChE serine residue',
+    keyFact: 'LD₅₀ honeybee (contact): 1.0 µg / bee — class "highly toxic"',
+    imageUrl:
+      'https://images.pexels.com/photos/2255935/pexels-photo-2255935.jpeg?auto=compress&cs=tinysrgb&w=1600',
+    imageCredit: 'Pexels — honeybee on flower',
+    citationIds: [2, 3],
   },
   {
     id: 'plant',
-    label: 'Plant Life',
-    subtitle: 'Crops & Vegetation',
-    colorVar: '--plant',
-    colorHex: '#2EA84A',
-    icon: '🌿',
+    index: '03',
+    label: 'Plants & Soil',
+    subtitle: 'Crops, vegetation, microbiota',
     intro:
-      'While carbaryl targets pest insects, it can also cause phytotoxic effects on certain crops and non-target vegetation, particularly at high application rates or during stress conditions.',
+      'Carbamates do not target plants directly, but residues persist in soil and on harvested produce. At pH > 7 carbaryl hydrolyses to 1-naphthol, which suppresses soil microbes and disturbs nitrogen cycling in the root zone.',
     mechanism:
-      'Carbaryl is absorbed by plant tissues through leaves and roots. It can disrupt plant enzyme systems and accumulate in crop residues. Soil persistence allows carbaryl hydrolysis products such as 1-naphthol to affect root-zone microbiota.',
-    equation: 'C12H11NO2 + H2O -> C10H7OH + CH3NHCOOH',
+      'In alkaline or moist soils carbaryl undergoes ester hydrolysis. The 1-naphthol product is more water-soluble and biologically active against soil bacteria and fungi that fix nitrogen and decompose organic matter.',
+    equation: 'C₁₂H₁₁NO₂  +  H₂O  →[OH⁻]  C₁₀H₇—OH  +  CH₃—NH—COOH',
     equationLabel: 'Alkaline hydrolysis of carbaryl in soil (pH > 7)',
-    keyFact: 'Soil half-life: 7-14 days aerobic; up to 28 days anaerobic',
-    citationId: 3,
+    keyFact: 'Soil half-life: 7–14 d aerobic, up to 28 d anaerobic',
+    imageUrl:
+      'https://images.pexels.com/photos/2284170/pexels-photo-2284170.jpeg?auto=compress&cs=tinysrgb&w=1600',
+    imageCredit: 'Pexels — cultivated field',
+    citationIds: [3, 6],
   },
 ]
