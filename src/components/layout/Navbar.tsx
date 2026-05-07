@@ -18,23 +18,22 @@ function scrollToSelector(selector: string) {
 }
 
 export function Navbar() {
-  const [scrolled, setScrolled] = useState(false)
+  const [onLightSection, setOnLightSection] = useState(false)
   const { scrollY } = useScroll()
 
-  useMotionValueEvent(scrollY, 'change', (y) => setScrolled(y > 50))
+  useMotionValueEvent(scrollY, 'change', (y) => setOnLightSection(y > window.innerHeight * 0.72))
 
   return (
     <div className="px-4 sm:px-6 md:px-12 lg:px-16 pt-4 md:pt-6 fixed top-0 left-0 right-0 z-50">
       <motion.nav
-        className="liquid-glass rounded-xl px-4 py-2 flex items-center justify-between gap-4"
+        className={`${onLightSection ? 'glass-card-light' : 'liquid-glass'} rounded-xl px-4 py-2 flex items-center justify-between gap-4 transition-colors duration-300`}
         initial={{ opacity: 0, y: -16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        style={{ backgroundColor: scrolled ? 'rgba(0, 0, 0, 0.58)' : 'rgba(0, 0, 0, 0.4)' }}
       >
         <a
           href="#"
-          className="text-white text-base sm:text-xl font-semibold tracking-tight whitespace-nowrap"
+          className={`${onLightSection ? 'text-[var(--text)]' : 'text-white'} text-base sm:text-xl font-semibold tracking-tight whitespace-nowrap transition-colors duration-300`}
           onClick={(event) => {
             event.preventDefault()
             scrollToSelector('#')
@@ -48,7 +47,7 @@ export function Navbar() {
             <a
               key={link.href}
               href={link.href}
-              className="text-sm text-white/80 hover:text-white transition-colors duration-200"
+              className={`${onLightSection ? 'text-[var(--text-muted)] hover:text-[var(--text)]' : 'text-white/80 hover:text-white'} text-sm transition-colors duration-200`}
               onClick={(event) => {
                 event.preventDefault()
                 scrollToSelector(link.href)
@@ -65,7 +64,7 @@ export function Navbar() {
             event.preventDefault()
             scrollToSelector('#overview')
           }}
-          className="bg-white text-black px-3 sm:px-5 py-1.5 rounded-lg text-xs sm:text-sm font-medium hover:bg-gray-100 transition-colors whitespace-nowrap"
+          className={`${onLightSection ? 'bg-[#4A6FD4] text-white hover:bg-[#3a5fc4]' : 'bg-white text-black hover:bg-gray-100'} px-3 sm:px-5 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-colors whitespace-nowrap`}
         >
           Explore Research
         </a>

@@ -93,7 +93,7 @@ export function MoleculeDisplay() {
             <motion.path
               key={`${bond.from}-${bond.to}`}
               d={getBondPath(a, b, bond.double)}
-              stroke="#c6cbd6"
+              stroke="rgba(200,215,255,0.45)"
               strokeWidth={1.5}
               fill="none"
               initial={{ pathLength: 0, opacity: 0 }}
@@ -135,7 +135,7 @@ export function MoleculeDisplay() {
           </motion.g>
         ))}
 
-        <text x="190" y="255" textAnchor="middle" fill="#6b7280" fontSize="13" fontFamily="Inter, sans-serif">
+        <text x="190" y="255" textAnchor="middle" fill="rgba(241,245,249,0.45)" fontSize="13" fontFamily="Inter, sans-serif">
           C12H11NO2 - Carbaryl
         </text>
       </motion.svg>

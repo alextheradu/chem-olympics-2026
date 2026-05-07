@@ -6,7 +6,7 @@ interface ChemCardProps {
 
 export function ChemCard({ label, value, accent = '#4A6FD4' }: ChemCardProps) {
   return (
-    <div className="rounded-xl p-4 bg-white shadow-sm border" style={{ borderColor: `${accent}22` }}>
+    <div className="soft-card rounded-xl p-4" style={{ borderColor: `${accent}22` }}>
       <p className="section-label mb-1" style={{ color: accent }}>
         {label}
       </p>
