@@ -4,7 +4,7 @@ export const carbamicAcid = {
   name: 'Carbamic Acid',
   formula: 'NH₂COOH',
   description:
-    'The parent compound of all carbamate pesticides. A simple amide of carbonic acid, unstable on its own but the structural backbone for an entire pesticide class.',
+    'Carbamic acid is NH₂COOH. Carbamate pesticides are derived from this parent compound and keep the carbamate functional group in their structure.',
   atoms: [
     { id: 'n', element: 'N', x: 80, y: 140 },
     { id: 'h1', element: 'H', x: 50, y: 110 },
@@ -26,15 +26,15 @@ export const carbamicAcid = {
 
 export const carbamateClass = {
   title: 'N-methyl Carbamates',
-  generalFormula: 'R—O—C(=O)—NH—CH₃',
+  generalFormula: 'R-O-C(=O)-NH-CH₃',
   about:
-    'Carbamate pesticides are esters derived from carbamic acid. The N-methyl carbamate sub-class is a potent acetylcholinesterase inhibitor used worldwide as insecticides. Their mechanism mirrors organophosphates, but the carbamylation of the AChE active site is reversible — making symptoms acute but recovery possible.',
+    'Carbamate pesticides are esters derived from carbamic acid. N-methyl carbamates are used as insecticides because they inhibit acetylcholinesterase in the nervous system.',
   derivation: 'Carbamate = ester of carbamic acid (NH₂COOH).',
   origin:
-    'First commercialized in the 1950s as a safer alternative to organophosphate and organochlorine pesticides. Today the class includes carbaryl, aldicarb, carbofuran, methomyl, oxamyl, and propoxur.',
+    'Examples in this site include carbaryl, aldicarb, carbofuran, methomyl, oxamyl, and propoxur.',
 }
 
-// Carbaryl (C12H11NO2) — naphthyl methylcarbamate. Hero example.
+// Carbaryl (C12H11NO2), naphthyl methylcarbamate.
 export const carbaryl = {
   name: 'Carbaryl',
   formula: 'C₁₂H₁₁NO₂',

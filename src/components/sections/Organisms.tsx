@@ -94,12 +94,12 @@ export function Organisms() {
           className="text-white text-4xl md:text-6xl lg:text-7xl font-normal tracking-tight max-w-4xl leading-[1.02]"
           stagger={22}
         >
-          One mechanism, three very different victims.
+          Affected organisms and environments.
         </AnimatedText>
         <Reveal delay={300}>
           <p className="text-white/65 text-base md:text-lg max-w-2xl leading-relaxed mt-8 mb-16">
-            Carbamate AChE inhibition is non-selective. Whatever has a cholinergic synapse — fish,
-            bees, even soil microbiota indirectly — is at risk once the residue moves off-field.
+            Carbamate AChE inhibition is not limited to one species. Aquatic life, insects,
+            pollinators, plants, and soil systems can all be affected once residue moves off field.
           </p>
         </Reveal>
       </div>

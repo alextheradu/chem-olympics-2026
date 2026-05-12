@@ -14,13 +14,13 @@ export function Solutions() {
           className="text-white text-4xl md:text-6xl lg:text-7xl font-normal tracking-tight max-w-4xl leading-[1.02] mb-8"
           stagger={22}
         >
-          Four levers. None alone is enough.
+          Approaches for solving the problem.
         </AnimatedText>
 
         <Reveal delay={300}>
           <p className="text-white/65 text-base md:text-lg max-w-2xl leading-relaxed mb-20">
-            Different actors — regulators, agronomists, microbiologists, watershed groups — work
-            on different parts of the carbamate problem. The strongest response stacks them.
+            Countries, regulators, researchers, farmers, and watershed groups all work on different
+            parts of the carbamate problem. The strongest response combines more than one approach.
           </p>
         </Reveal>
 

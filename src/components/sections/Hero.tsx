@@ -29,7 +29,7 @@ export function Hero() {
 
             <FadeIn delay={800} duration={1000}>
               <p className="text-base md:text-lg text-gray-300 mb-5">
-                Tracing the chemical journey from farm fields to aquatic ecosystems.
+                How carbamate pesticide runoff reaches aquatic life and affects human health.
               </p>
             </FadeIn>
 

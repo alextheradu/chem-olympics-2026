@@ -6,32 +6,32 @@ export interface ImpactItem {
 
 export const humanImpact = {
   intro:
-    'Carbamate poisoning is acute, often reversible, but always serious. Onset can occur within minutes of skin contact, inhalation, or ingestion. Severe cases require atropine and supportive care.',
+    'Carbamate exposure can affect the nervous system. Symptoms may appear after skin contact, inhalation, or ingestion, and serious exposure needs medical help right away.',
   acute: [
-    { label: 'Neuro', body: 'Dizziness, headache, blurred vision, tremors, muscle twitching.' },
-    { label: 'GI', body: 'Nausea, vomiting, abdominal cramps, diarrhoea, sweating.' },
+    { label: 'Neuro', body: 'Dizziness, headaches, weakness, shaking, tremors, and blurred vision.' },
+    { label: 'GI', body: 'Nausea, vomiting, stomach cramps, diarrhea, and sweating.' },
     { label: 'Skin', body: 'Mild rash on contact; chemical irritation at exposure site.' },
     { label: 'Severe', body: 'Convulsions, paralysis, respiratory failure, possible death without treatment.' },
   ] satisfies ImpactItem[],
   chronic: [
-    { label: 'Weight', body: 'Long-term exposure: loss of appetite, weight loss, persistent weakness.' },
-    { label: 'Mood', body: 'Reports of depression, anxiety, irritability after repeated low-dose exposure.' },
-    { label: 'Development', body: 'Prenatal / infant exposure to propoxur linked to abnormal neurodevelopment.' },
-    { label: 'Cancer', body: 'High-exposure cohorts show associations with stomach, esophageal, tongue cancers.' },
+    { label: 'Appetite', body: 'Long-term exposure can cause loss of appetite.' },
+    { label: 'Weight', body: 'Long-term exposure can lead to weight loss and weakness.' },
+    { label: 'Mood', body: 'Repeated exposure has been linked to depression, anxiety, or irritability for some carbamates.' },
+    { label: 'Development', body: 'Propoxur exposure before birth or during infancy has been linked to abnormal neurodevelopment.' },
   ] satisfies ImpactItem[],
   firstAid:
-    'If ingestion is suspected — call poison control / emergency services immediately. Do not induce vomiting unless directed.',
-  citationIds: [3, 5, 6],
+    'If ingestion is suspected, call poison control or emergency services immediately. Do not induce vomiting unless directed.',
+  citationIds: [5, 10, 11],
 }
 
 export const environmentImpact = {
   intro:
-    'Carbamate residues do not just stay in the field. They reshape food webs in receiving waters, suppress pollination services in flowering crops, and alter soil microbial communities through hydrolysis products.',
+    'Carbamate residues do not always stay in the field. Runoff can move them into water, where aquatic organisms, insects, pollinators, and food webs can be affected.',
   bullets: [
-    { metric: '> 50%', label: 'Urban streams sampled', body: 'detected carbaryl above method-quantitation limits in monitoring studies.' },
-    { metric: '1.0 µg', label: 'Honeybee LD₅₀', body: 'per bee — a single drift droplet can be lethal during bloom.' },
-    { metric: '7–28 d', label: 'Soil half-life', body: 'depending on aerobic conditions, pH, and organic carbon.' },
-    { metric: '1.3 mg L⁻¹', label: 'Trout LC₅₀ (96 h)', body: 'sub-lethal effects on Daphnia magna at much lower thresholds.' },
+    { metric: 'AChE', label: 'Nervous system enzyme', body: 'carbamates inhibit acetylcholinesterase at synaptic junctions.' },
+    { metric: 'Runoff', label: 'Water pathway', body: 'rain and irrigation can move pesticide residue into nearby streams and rivers.' },
+    { metric: 'Bees', label: 'Pollinators', body: 'carbaryl and several other carbamates are highly toxic to bees.' },
+    { metric: 'Fish', label: 'Aquatic life', body: 'fish and aquatic invertebrates can be harmed when contaminated runoff reaches water.' },
   ] satisfies ImpactItem[],
-  citationIds: [1, 2, 6],
+  citationIds: [1, 2, 3, 7],
 }

@@ -7,47 +7,47 @@ export interface Approach {
 export const approaches: Approach[] = [
   {
     title: 'Regulatory restriction',
-    actor: 'EPA · EU Commission',
+    actor: 'EPA and national regulators',
     body:
-      'Carbofuran granular use was cancelled in the U.S. in 2009; aldicarb registrations have been repeatedly tightened. EU has banned several N-methyl carbamates outright, citing groundwater contamination and pollinator risk.',
+      'Government agencies can restrict or cancel high-risk carbamate uses. This helps lower exposure from compounds such as carbofuran and aldicarb, but enforcement is still needed.',
   },
   {
     title: 'Integrated Pest Management',
-    actor: 'FAO · land-grant extensions',
+    actor: 'Farmers, researchers, and extension groups',
     body:
-      'Threshold-based scouting, beneficial-insect releases, and crop rotation reduce reliance on broad-spectrum carbamates. Adoption is slow on commodity crops because chemical inputs remain cheaper per acre.',
+      'Integrated Pest Management uses scouting, crop rotation, beneficial insects, and targeted spraying. It reduces unnecessary pesticide use instead of relying on broad spraying every time.',
   },
   {
     title: 'Bioremediation',
     actor: 'Academic researchers',
     body:
-      'Soil bacteria of the Pseudomonas and Bacillus genera express carbaryl hydrolase enzymes that cleave the carbamate linkage. Field trials show measurable cleanup of contaminated soils.',
+      'Researchers study bacteria and enzymes that can break down carbamate residues in contaminated soil. This can help treat pollution after exposure has already happened.',
   },
   {
     title: 'Buffer strips & runoff controls',
-    actor: 'NRCS · watershed groups',
+    actor: 'Watershed groups and conservation programs',
     body:
-      'Vegetated buffers, cover crops, and conservation tillage cut sediment-bound carbamate loads to surface waters by 60–90% in modelled and field studies.',
+      'Vegetated buffer strips, cover crops, and conservation tillage reduce the amount of pesticide residue that leaves fields in runoff water.',
   },
 ]
 
 export const bestPractice = {
-  title: 'Best practice — IPM with regulatory backstop',
+  title: 'Best practice - IPM with regulatory limits',
   reasoning:
-    'No single control eliminates carbamate harm. The most defensible approach pairs Integrated Pest Management at the farm scale with hard regulatory limits at the registration scale. IPM cuts unnecessary applications; regulation removes the most dangerous compounds (aldicarb, carbofuran) outright. Bioremediation and buffer strips treat the residue that still escapes.',
+    'The best option is to combine Integrated Pest Management with strong restrictions on the most dangerous carbamates. IPM lowers how often pesticides are used. Regulation can remove or limit compounds that create the highest risk. Buffer strips and bioremediation help with residue that still escapes the field.',
 }
 
 export const shortcomings: { title: string; body: string }[] = [
   {
     title: 'Cost shifts to growers',
-    body: 'IPM is labour-intensive. Smallholders without subsidised extension services face genuine economic pressure to spray.',
+    body: 'IPM takes more labor, monitoring, and planning. Smaller farms may still feel pressure to spray because it is cheaper and faster.',
   },
   {
     title: 'Enforcement gaps',
-    body: 'Restricted carbamates remain available through grey-market channels in many countries; illegal wildlife poisoning persists.',
+    body: 'Restricted carbamates can still be used illegally, and some compounds are used to poison wildlife.',
   },
   {
     title: 'Replacement chemistry',
-    body: 'Banning one carbamate often shifts use to neonicotinoids — also bee-toxic, with their own ecological costs.',
+    body: 'Banning one pesticide can shift use to another pesticide class, which may create new environmental problems.',
   },
 ]

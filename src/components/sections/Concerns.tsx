@@ -16,13 +16,13 @@ export function Concerns() {
           className="text-white text-4xl md:text-6xl lg:text-7xl font-normal tracking-tight max-w-4xl leading-[1.02] mb-8"
           stagger={22}
         >
-          Six compounds. Each with its own footprint.
+          Potential concerns of carbamate chemicals.
         </AnimatedText>
 
         <Reveal delay={300}>
           <p className="text-white/65 text-base md:text-lg max-w-2xl leading-relaxed mb-20">
-            The N-methyl carbamate class shares a mechanism, but acute toxicity, environmental
-            persistence, and regulatory status differ sharply across compounds.
+            Carbamate pesticides share a nervous system mechanism, but each compound has different
+            concerns for people, wildlife, water, and pollinators.
           </p>
         </Reveal>
 

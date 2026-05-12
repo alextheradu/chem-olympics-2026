@@ -15,13 +15,13 @@ export function HealthImpact() {
           className="text-white text-4xl md:text-6xl lg:text-7xl font-normal tracking-tight max-w-4xl leading-[1.02] mb-8"
           stagger={22}
         >
-          Acute on people. Persistent on the environment.
+          Environmental and human health impacts.
         </AnimatedText>
 
         <Reveal delay={300}>
           <p className="text-white/65 text-base md:text-lg max-w-2xl leading-relaxed mb-24">
-            Carbamate exposure presents quickly in humans, then resolves with treatment. The
-            ecological signal is slower, broader, and more difficult to reverse.
+            Carbamate exposure can cause symptoms in people and can also affect aquatic life,
+            pollinators, soil, and food chains after runoff.
           </p>
         </Reveal>
 

@@ -20,11 +20,11 @@ export const pathway: PathwayStage[] = [
     imageUrl:
       'https://images.pexels.com/photos/2933243/pexels-photo-2933243.jpeg?auto=compress&cs=tinysrgb&w=1600',
     chemistry:
-      'Carbaryl (C₁₂H₁₁NO₂) is sprayed on crops at 1–2 kg ha⁻¹ as a wettable powder or liquid emulsion. As an N-methyl carbamate it is the ester of carbamic acid and 1-naphthol — a configuration that makes it broadly insecticidal yet hydrolytically labile.',
-    equation: 'NH₂COOH  +  C₁₀H₇—OH  ⇌  C₁₂H₁₁NO₂  +  H₂O',
-    equationLabel: 'Esterification — formal synthesis from parent acid',
-    example: 'Corn, apples, ornamentals — applied during the growing season, often pre-harvest.',
-    citationIds: [4, 6],
+      'Carbaryl (C₁₂H₁₁NO₂) is an insecticide in the N-methyl carbamate class. It is derived from carbamic acid and is sprayed on crops to control insects.',
+    equation: 'NH₂COOH  +  C₁₀H₇-OH  ⇌  C₁₂H₁₁NO₂  +  H₂O',
+    equationLabel: 'Formal esterification from carbamic acid and 1-naphthol',
+    example: 'Spraying pesticides on fields can start the pathway from field soil to nearby water.',
+    citationIds: [7],
   },
   {
     id: 2,
@@ -34,11 +34,11 @@ export const pathway: PathwayStage[] = [
     imageUrl:
       'https://images.pexels.com/photos/2280571/pexels-photo-2280571.jpeg?auto=compress&cs=tinysrgb&w=1600',
     chemistry:
-      'Carbaryl reaching the soil partitions between organic matter (sorbed) and the soil-water phase. Sorption strength rises with organic-carbon content (Kₒc ≈ 200–300). In alkaline soils, hydrolysis to 1-naphthol begins immediately.',
-    equation: 'C₁₂H₁₁NO₂  +  H₂O  →[OH⁻]  C₁₀H₇—OH  +  CH₃—NH—COOH',
+      'After application, some carbaryl stays on plants while some reaches soil. Water, soil type, and pH affect whether it stays bound to soil or moves with runoff water.',
+    equation: 'C₁₂H₁₁NO₂  +  H₂O  →[OH⁻]  C₁₀H₇-OH  +  CH₃-NH-COOH',
     equationLabel: 'Hydrolysis dominant at pH > 7',
-    example: 'Sandy, low-organic soils → faster leaching. Clay & peat soils → tighter binding, slower release.',
-    citationIds: [6],
+    example: 'Loose or low-organic soils can allow faster movement into drainage paths.',
+    citationIds: [3],
   },
   {
     id: 3,
@@ -48,9 +48,9 @@ export const pathway: PathwayStage[] = [
     imageUrl:
       'https://images.pexels.com/photos/957024/forest-trees-perspective-bright-957024.jpeg?auto=compress&cs=tinysrgb&w=1600',
     chemistry:
-      'Rainfall and irrigation transport dissolved carbaryl and sediment-bound carbaryl into ditches, streams, and rivers. Detected concentrations in monitored urban streams routinely exceed chronic aquatic-life benchmarks.',
-    example: 'Carbaryl is detected in more than half of sampled urban streams in some U.S. monitoring programs.',
-    citationIds: [3, 6],
+      'Rainfall and irrigation can transport dissolved carbaryl and sediment-bound carbaryl into ditches, streams, and rivers. This is the major link between farm application and aquatic exposure.',
+    example: 'Nearby water areas can receive pesticide runoff after storms or heavy irrigation.',
+    citationIds: [1, 7],
   },
   {
     id: 4,
@@ -60,11 +60,11 @@ export const pathway: PathwayStage[] = [
     imageUrl:
       'https://images.pexels.com/photos/1131407/pexels-photo-1131407.jpeg?auto=compress&cs=tinysrgb&w=1600',
     chemistry:
-      'Carbaryl is absorbed across gill membranes and skin. At the cholinergic synapse it carbamylates the serine —OH of acetylcholinesterase, blocking acetylcholine breakdown. Nerve impulses fire continuously; paralysis follows.',
-    equation: 'AChE—OH  +  Carbaryl  →  AChE—O—C(=O)—NH—CH₃  (carbamyl-AChE)',
-    equationLabel: 'Active-site carbamylation — reversible',
-    example: 'Rainbow trout LC₅₀ ≈ 1.3 mg L⁻¹ (96 h). Daphnia magna respond at far lower concentrations.',
-    citationIds: [1],
+      'When carbaryl contacts aquatic organisms, it inhibits acetylcholinesterase at synaptic junctions. Acetylcholine builds up because it is not broken down normally, so nerve pulses continue firing.',
+    equation: 'AChE-OH  +  Carbaryl  →  AChE-O-C(=O)-NH-CH₃  (carbamyl-AChE)',
+    equationLabel: 'AChE inhibition in the nervous system',
+    example: 'The buildup of acetylcholine can cause uncontrolled movement, paralysis, convulsions, and possible death.',
+    citationIds: [1, 7],
   },
   {
     id: 5,
@@ -74,9 +74,9 @@ export const pathway: PathwayStage[] = [
     imageUrl:
       'https://images.pexels.com/photos/1661179/pexels-photo-1661179.jpeg?auto=compress&cs=tinysrgb&w=1600',
     chemistry:
-      'Carbaryl has a low bioconcentration factor, so it does not biomagnify like organochlorines — but sub-lethal effects propagate. Slow, disoriented insects and small fish are easier prey, so predators sample disproportionately exposed organisms.',
+      'When the bottom of the food chain is affected by pesticides, the impact can move upward. Small aquatic organisms, insects, fish, and predators are connected through feeding relationships.',
     example:
-      'Birds and mammals near sprayed watersheds accumulate exposure indirectly. Carbofuran has been used illegally to bait raptors.',
-    citationIds: [4, 6],
+      'If invertebrates or small fish are weakened, larger fish and birds can be affected through food-chain changes.',
+    citationIds: [1],
   },
 ]

@@ -66,7 +66,7 @@ export function Pathway() {
             className="text-white text-3xl md:text-4xl lg:text-5xl font-normal tracking-tight max-w-3xl leading-[1.05]"
             stagger={20}
           >
-            From spray nozzle to apex predator — five stages.
+            Contamination pathway from source to organism.
           </AnimatedText>
 
           <div className="mt-8 flex items-center gap-2">

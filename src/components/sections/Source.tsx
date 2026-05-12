@@ -34,14 +34,13 @@ export function Source() {
           className="text-white text-4xl md:text-6xl lg:text-7xl font-normal tracking-tight max-w-4xl leading-[1.02] mb-8"
           stagger={22}
         >
-          A pesticide class built around one unstable acid.
+          Chemical structure and source.
         </AnimatedText>
 
         <Reveal delay={300}>
           <p className="text-white/65 text-base md:text-lg max-w-2xl leading-relaxed">
-            Every carbamate insecticide in commercial use traces back to the same parent —
-            carbamic acid, NH₂COOH. The molecule itself decomposes on contact with water,
-            but its esters are stable, lipophilic, and lethal to insects.
+            Carbamate pesticides are derived from carbamic acid, NH₂COOH. The class includes
+            insecticides such as carbaryl, aldicarb, carbofuran, methomyl, oxamyl, and propoxur.
           </p>
         </Reveal>
 
@@ -81,14 +80,14 @@ export function Source() {
             <p>{carbamateClass.derivation}</p>
           </ChemCard>
           <ChemCard label="Mechanism" title="Reversible AChE inhibitor">
-            Carbamates block acetylcholinesterase by carbamylating the active-site serine.
-            Unlike organophosphates, the bond hydrolyses back — making intoxication acute
-            but recovery possible with prompt care.
-            <Cite ids={[1, 6]} />
+            Carbamates inhibit acetylcholinesterase, the enzyme that breaks down acetylcholine.
+            When AChE is blocked, acetylcholine builds up in nerve synapses and causes continual
+            firing of nerve pulses.
+            <Cite ids={[1, 7]} />
           </ChemCard>
           <ChemCard label="In use" title="A six-compound class">
-            Carbaryl, aldicarb, carbofuran, methomyl, oxamyl, propoxur — six commercial
-            N-methyl carbamates the rest of this site dissects in detail.
+            Carbaryl, aldicarb, carbofuran, methomyl, oxamyl, and propoxur are six carbamates
+            covered in the concerns section.
           </ChemCard>
         </div>
       </div>
