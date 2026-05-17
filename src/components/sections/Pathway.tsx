@@ -4,6 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
 import { AnimatedText, Reveal } from '../ui/AnimatedText'
 import { Cite } from '../ui/Cite'
+import { ChemReaction } from '../ui/ChemReaction'
 import { pathway } from '../../data/pathway'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -140,10 +141,18 @@ export function Pathway() {
                   <Cite ids={stage.citationIds} />
                 </p>
 
-                {stage.equation ? (
+                {stage.reaction ? (
+                  <div className="mb-5 max-w-3xl">
+                    <ChemReaction
+                      {...stage.reaction}
+                      formula={stage.equation ?? ''}
+                      formulaLabel={stage.equationLabel}
+                    />
+                  </div>
+                ) : stage.equation ? (
                   <div className="mono-card rounded-xl px-5 py-3 max-w-2xl mb-5 overflow-x-auto">
                     <p className="chem-formula text-white text-sm whitespace-nowrap mb-1">
-                      {stage.equation.replace('→', '⟶').replace('⇌', '⇌')}
+                      {stage.equation}
                     </p>
                     {stage.equationLabel ? (
                       <p className="text-white/45 text-xs tracking-wide">{stage.equationLabel}</p>

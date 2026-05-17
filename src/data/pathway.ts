@@ -1,3 +1,6 @@
+import type { PathwayReaction } from './reactions'
+import { reactionApplication, reactionHydrolysis, reactionAChE } from './reactions'
+
 export interface PathwayStage {
   id: number
   index: string
@@ -7,6 +10,7 @@ export interface PathwayStage {
   chemistry: string
   equation?: string
   equationLabel?: string
+  reaction?: PathwayReaction
   example: string
   citationIds: number[]
 }
@@ -23,6 +27,7 @@ export const pathway: PathwayStage[] = [
       'Carbaryl (C₁₂H₁₁NO₂) is an insecticide in the N-methyl carbamate class. It is derived from carbamic acid and is sprayed on crops to control insects.',
     equation: 'NH₂COOH  +  C₁₀H₇OH  ⟶  C₁₂H₁₁NO₂  +  H₂O',
     equationLabel: 'Esterification: carbamic acid + 1-naphthol → carbaryl + water',
+    reaction: reactionApplication,
     example: 'Spraying pesticides on fields can start the pathway from field soil to nearby water.',
     citationIds: [7],
   },
@@ -37,6 +42,7 @@ export const pathway: PathwayStage[] = [
       'After application, some carbaryl stays on plants while some reaches soil. Water, soil type, and pH affect whether it stays bound to soil or moves with runoff water.',
     equation: 'C₁₂H₁₁NO₂  +  H₂O  ─[OH⁻]→  C₁₀H₇OH  +  CH₃NHCOOH',
     equationLabel: 'Hydrolysis dominant at pH > 7',
+    reaction: reactionHydrolysis,
     example: 'Loose or low-organic soils can allow faster movement into drainage paths.',
     citationIds: [3],
   },
@@ -61,8 +67,9 @@ export const pathway: PathwayStage[] = [
       'https://images.pexels.com/photos/1131407/pexels-photo-1131407.jpeg?auto=compress&cs=tinysrgb&w=1600',
     chemistry:
       'When carbaryl contacts aquatic organisms, it inhibits acetylcholinesterase at synaptic junctions. Acetylcholine builds up because it is not broken down normally, so nerve pulses continue firing.',
-    equation: 'AChE–OH  +  R–O–C(=O)–NHCH₃  ⟶  AChE–O–C(=O)–NHCH₃  +  R–OH',
+    equation: 'AChE–OH  +  Carbaryl  ⟶  AChE–O–C(=O)–NHCH₃  +  1-Naphthol',
     equationLabel: 'Carbamylation of AChE active site — blocks acetylcholine breakdown',
+    reaction: reactionAChE,
     example: 'The buildup of acetylcholine can cause uncontrolled movement, paralysis, convulsions, and possible death.',
     citationIds: [1, 7],
   },
