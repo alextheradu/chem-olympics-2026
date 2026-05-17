@@ -1,17 +1,26 @@
 import { useState } from 'react'
 import { AnimatedText, Reveal } from '../ui/AnimatedText'
 import { Cite } from '../ui/Cite'
-import { MoleculeDisplay } from '../ui/MoleculeDisplay'
+import { MoleculeDisplay, type Atom, type Bond } from '../ui/MoleculeDisplay'
 import { concerns } from '../../data/concerns'
 import { carbaryl, aldicarb, carbofuran, methomyl, oxamyl, propoxur } from '../../data/carbamate'
 
-const structureMap: Record<string, typeof carbaryl> = {
-  Carbaryl: carbaryl,
-  Aldicarb: aldicarb,
-  Carbofuran: carbofuran,
-  Methomyl: methomyl,
-  Oxamyl: oxamyl,
-  Propoxur: propoxur,
+interface CompoundStructure {
+  name: string
+  formula: string
+  carbamateAtoms: string[]
+  viewBox: string
+  atoms: Atom[]
+  bonds: Bond[]
+}
+
+const structureMap: Record<string, CompoundStructure> = {
+  Carbaryl: carbaryl as CompoundStructure,
+  Aldicarb: aldicarb as CompoundStructure,
+  Carbofuran: carbofuran as CompoundStructure,
+  Methomyl: methomyl as CompoundStructure,
+  Oxamyl: oxamyl as CompoundStructure,
+  Propoxur: propoxur as CompoundStructure,
 }
 
 export function Concerns() {
