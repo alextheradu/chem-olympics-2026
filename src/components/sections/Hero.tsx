@@ -21,7 +21,7 @@ export function Hero() {
         <div className="lg:grid lg:grid-cols-2 lg:items-end gap-8">
           <div>
             <AnimatedHeading
-              text={'Carbamate Pesticides\nEnvironmental Impact.'}
+              text={"Carbamate Pesticides'\nEnvironmental Impact."}
               className="text-white text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-normal mb-4 leading-[0.96]"
               initialDelay={200}
               charDelay={30}
@@ -60,10 +60,26 @@ export function Hero() {
           </div>
 
           <FadeIn delay={1400} duration={1000} className="hidden lg:flex items-end justify-end">
-            <div className="liquid-glass border border-white/20 px-6 py-3 rounded-xl">
-              <p className="text-lg md:text-xl lg:text-2xl font-light text-white">
-                Carbamate. Pesticide. Ecosystem.
-              </p>
+            <div className="liquid-glass border border-white/20 px-6 py-4 rounded-xl flex gap-6">
+              {[
+                { term: 'Carbamate', sub: 'Chemical source', href: '#source' },
+                { term: 'Pesticide', sub: 'Six compounds', href: '#concerns' },
+                { term: 'Ecosystem', sub: 'From field to fish', href: '#pathway' },
+              ].map(({ term, sub, href }) => (
+                <a
+                  key={term}
+                  href={href}
+                  onClick={(e) => { e.preventDefault(); scrollToSelector(href) }}
+                  className="flex flex-col items-center gap-1 group cursor-pointer"
+                >
+                  <span className="text-white text-base md:text-lg font-light group-hover:text-white/80 transition-colors">
+                    {term}.
+                  </span>
+                  <span className="text-white/40 text-[10px] uppercase tracking-[0.15em] group-hover:text-white/60 transition-colors">
+                    {sub}
+                  </span>
+                </a>
+              ))}
             </div>
           </FadeIn>
         </div>

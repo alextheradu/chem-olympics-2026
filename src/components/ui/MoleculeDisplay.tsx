@@ -5,11 +5,12 @@ const ATOM_COLORS: Record<string, string> = {
   N: '#3050f8',
   O: '#ff0d0d',
   H: '#ffffff',
+  S: '#d4b800',
 }
 
 export interface Atom {
   id: string
-  element: 'C' | 'N' | 'O' | 'H'
+  element: 'C' | 'N' | 'O' | 'H' | 'S'
   x: number
   y: number
   label?: string
@@ -30,6 +31,7 @@ interface MoleculeDisplayProps {
   viewBox?: string
   className?: string
   showLegend?: boolean
+  highlightAtoms?: string[]
 }
 
 function bondPath(a: Atom, b: Atom, offset = 0) {
@@ -50,8 +52,10 @@ export function MoleculeDisplay({
   viewBox = '0 0 380 280',
   className = '',
   showLegend = true,
+  highlightAtoms = [],
 }: MoleculeDisplayProps) {
   const atomMap = Object.fromEntries(atoms.map((a) => [a.id, a]))
+  const highlightSet = new Set(highlightAtoms)
 
   return (
     <div className={`w-full flex flex-col items-center gap-4 ${className}`}>
@@ -101,6 +105,17 @@ export function MoleculeDisplay({
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.35, delay: bonds.length * 0.04 + i * 0.05 }}
           >
+            {highlightSet.has(atom.id) && (
+              <circle
+                cx={atom.x}
+                cy={atom.y}
+                r={(atom.label ? 18 : 11) + 6}
+                fill="rgba(255,200,60,0.12)"
+                stroke="rgba(255,200,60,0.5)"
+                strokeWidth={1}
+                strokeDasharray="3 2"
+              />
+            )}
             <circle
               cx={atom.x}
               cy={atom.y}
@@ -138,13 +153,17 @@ export function MoleculeDisplay({
       </motion.svg>
 
       {showLegend ? (
-        <div className="flex gap-4 text-[11px] text-white/50 tracking-wide">
+        <div className="flex flex-wrap gap-3 text-[11px] text-white/50 tracking-wide">
           {Object.entries(ATOM_COLORS).map(([el, color]) => (
             <div key={el} className="flex items-center gap-1.5">
               <span className="w-2.5 h-2.5 rounded-full inline-block" style={{ background: color }} />
               <span>{el}</span>
             </div>
           ))}
+          <div className="flex items-center gap-1.5">
+            <span className="w-2.5 h-2.5 rounded-full inline-block border border-dashed border-yellow-400/50 bg-yellow-400/10" />
+            <span>carbamate group</span>
+          </div>
         </div>
       ) : null}
     </div>

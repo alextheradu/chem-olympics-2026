@@ -1,6 +1,7 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
 
 const navLinks = [
+  { label: 'Home', href: '#' },
   { label: 'Source', href: '#source' },
   { label: 'Concerns', href: '#concerns' },
   { label: 'Pathway', href: '#pathway' },
