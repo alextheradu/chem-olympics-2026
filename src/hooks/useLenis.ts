@@ -5,9 +5,16 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
+let _lenis: Lenis | null = null
+
+export function getLenis(): Lenis | null {
+  return _lenis
+}
+
 export function useLenis() {
   useEffect(() => {
     const lenis = new Lenis()
+    _lenis = lenis
     const raf = (time: number) => {
       lenis.raf(time * 1000)
     }
@@ -19,6 +26,7 @@ export function useLenis() {
     return () => {
       gsap.ticker.remove(raf)
       lenis.destroy()
+      _lenis = null
     }
   }, [])
 }

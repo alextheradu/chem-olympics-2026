@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
@@ -6,6 +6,7 @@ import { AnimatedText, Reveal } from '../ui/AnimatedText'
 import { Cite } from '../ui/Cite'
 import { ChemReaction } from '../ui/ChemReaction'
 import { pathway } from '../../data/pathway'
+import { getLenis } from '../../hooks/useLenis'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -48,6 +49,28 @@ export function Pathway() {
     },
     { scope: wrapperRef }
   )
+
+  useEffect(() => {
+    const wrapper = wrapperRef.current
+    if (!wrapper) return
+
+    const onWheel = (e: WheelEvent) => {
+      const rect = wrapper.getBoundingClientRect()
+      // Only active while section is pinned (spans the viewport)
+      if (rect.top > 0 || rect.bottom < window.innerHeight) return
+      // Only when horizontal is the dominant axis
+      if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return
+
+      e.preventDefault()
+      const lenis = getLenis()
+      if (!lenis) return
+      const target = (lenis as any).targetScroll ?? lenis.scroll
+      lenis.scrollTo(target + e.deltaX, { immediate: false })
+    }
+
+    window.addEventListener('wheel', onWheel, { passive: false })
+    return () => window.removeEventListener('wheel', onWheel)
+  }, [])
 
   return (
     <section
