@@ -15,7 +15,15 @@ function scrollTo(selector: string) {
     window.scrollTo({ top: 0, behavior: 'smooth' })
     return
   }
-  document.querySelector(selector)?.scrollIntoView({ behavior: 'smooth' })
+  const el = document.querySelector(selector) as HTMLElement | null
+  if (!el) return
+  // Pathway uses GSAP ScrollTrigger start:'top top' — must land at exact offsetTop,
+  // not scrollIntoView which applies scroll-margin-top and undershoots the trigger.
+  if (selector === '#pathway') {
+    window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY, behavior: 'smooth' })
+    return
+  }
+  el.scrollIntoView({ behavior: 'smooth' })
 }
 
 export function Navbar() {
