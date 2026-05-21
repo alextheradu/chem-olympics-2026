@@ -34,7 +34,7 @@ function MoleculeIcon({ atoms, bonds, viewBox, formula, displayWidth, highlightA
         style={{ width: '100%', display: 'block' }}
         aria-label={`${formula} structure`}
       >
-        {bonds.map((bond, i) => {
+        {bonds.map((bond) => {
           const a = atomMap[bond.from]
           const b = atomMap[bond.to]
           if (!a || !b) return null
