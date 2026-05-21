@@ -35,7 +35,7 @@ export function Pathway() {
             trigger: wrapper,
             start: 'top top',
             end: 'bottom bottom',
-            scrub: 0.6,
+            scrub: 0.25,
             invalidateOnRefresh: true,
             onUpdate: (self) => {
               const idx = Math.min(pathway.length - 1, Math.floor(self.progress * pathway.length))
@@ -58,14 +58,15 @@ export function Pathway() {
       const rect = wrapper.getBoundingClientRect()
       // Only active while section is pinned (spans the viewport)
       if (rect.top > 0 || rect.bottom < window.innerHeight) return
-      // Only when horizontal is the dominant axis
-      if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return
+      // Trigger when horizontal has any meaningful contribution
+      if (Math.abs(e.deltaX) < Math.abs(e.deltaY) * 0.4) return
 
       e.preventDefault()
       const lenis = getLenis()
       if (!lenis) return
       const target = (lenis as any).targetScroll ?? lenis.scroll
-      lenis.scrollTo(target + e.deltaX, { immediate: false })
+      // lerp:1 = instant Lenis target update (no extra smoothing layer on top of GSAP scrub)
+      lenis.scrollTo(target + e.deltaX * 2.5, { lerp: 1 })
     }
 
     window.addEventListener('wheel', onWheel, { passive: false })
